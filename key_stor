@@ -1,33 +1,44 @@
-1 - {
+1 
 ***********************************************************************
+
 in mac :
+type in cmd :
 
 keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA \
         -keysize 2048 -validity 10000 -alias upload
-************************************************************************
+
+
+
 in windows : 
+type in cmd :
 
 keytool -genkey -v -keystore %userprofile%\upload-keystore.jks ^
         -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 ^
         -alias upload
 *************************************************************************
-}
+
 /////////////////////////////////////////////////////////////////////////
 
-2 - {
+2 
+
 ***********************************************************************
-* Create a file named [project]/android/key.properties
-* storePassword=<password-from-previous-step>
+
+******************   Create a file named [project]/android/key.properties ********************************
+
+storePassword=<password-from-previous-step>
 keyPassword=<password-from-previous-step>
 keyAlias=upload
 storeFile=<keystore-file-location>
+
 *********************************************************************
-}
+
 ////////////////////////////////////////////////////////////////////////
 
-3 - {
+3 
 ***************************************************************************
 in  android/app/build.gradle file 
+
+
 * before the android block:
 
    def keystoreProperties = new Properties()
@@ -36,11 +47,12 @@ in  android/app/build.gradle file
        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
    }
 
-   android {
+ !!!!!!!  android {   
          ...
-   }
+   } !!!!!!!!!!!!!!!
 **********************************************************************************************
-replace buildTypes block:
+*  replace buildTypes block:
+
 
    signingConfigs {
        release {
